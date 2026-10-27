@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Simkad OneXOX – Beli Mudah, Hantar ke Rumah</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fffbea;--card:#fff;--ink:#2b2a33;--mute:#6b6a75;--green:#6cb52d;--green-d:#3f7d12;--sun:#ffc93c;--coral:#ff6b57;--sky:#dff4ff;--line:#f0e6b8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1c14;--card:#2a291d;--ink:#fdf8e1;--mute:#c9c4a3;--green:#8cc641;--green-d:#b5e57a;--sky:#233843;--line:#4a4727}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Nunito',system-ui,sans-serif;line-height:1.55}
+h1,h2,h3{font-family:'Baloo 2','Nunito',sans-serif;line-height:1.15;margin:0}
+.wrap{max-width:960px;margin:0 auto;padding:0 18px}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+.logo{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.3rem}
+.logo span{background:var(--sun);color:#2b2a33;padding:0 8px;border-radius:10px;margin-left:2px}
+.btn{display:inline-block;border:0;cursor:pointer;font:800 1rem 'Nunito',sans-serif;padding:13px 22px;border-radius:999px;background:var(--green);color:#fff;text-decoration:none;box-shadow:0 4px 0 var(--green-d);transition:transform .1s}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--green-d)}
+.btn.sun{background:var(--sun);color:#2b2a33;box-shadow:0 4px 0 #d99f12}
+.btn.small{padding:8px 16px;font-size:.9rem}
+.hero{background:var(--sun);border-radius:32px;padding:34px 24px;margin-top:6px;position:relative;overflow:hidden;color:#2b2a33}
+.hero h1{font-size:clamp(2rem,7vw,3.2rem);font-weight:800;max-width:14ch}
+.hero p{font-size:1.1rem;max-width:34ch;margin:12px 0 22px}
+.hero .blob{position:absolute;right:-40px;bottom:-50px;width:210px;height:210px;border-radius:50%;background:var(--green);opacity:.9}
+.hero .blob2{position:absolute;right:90px;top:-30px;width:90px;height:90px;border-radius:50%;background:var(--coral)}
+.hero .sim{position:absolute;right:26px;bottom:26px;font-size:5.2rem;transform:rotate(-12deg)}
+.perks{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:22px 0}
+.perk{background:var(--sky);border-radius:20px;padding:14px 16px;font-weight:700}
+.perk b{display:block;font-size:1.6rem}
+section{margin:38px 0}
+section>h2{font-size:1.8rem;margin-bottom:6px}
+.sub{color:var(--mute);margin:0 0 18px}
+.tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.tab{border:2px solid var(--line);background:var(--card);color:var(--ink);font:800 .95rem 'Nunito',sans-serif;padding:8px 16px;border-radius:999px;cursor:pointer}
+.tab[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.plans{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.plan{background:var(--card);border:3px solid var(--line);border-radius:26px;padding:20px;display:flex;flex-direction:column;gap:8px;position:relative}
+.plan.pop{border-color:var(--coral)}
+.badge{position:absolute;top:-13px;right:16px;background:var(--coral);color:#fff;font-weight:800;font-size:.8rem;padding:3px 12px;border-radius:999px}
+.plan h3{font-size:1.35rem}
+.price{font-family:'Baloo 2',sans-serif;font-size:2.4rem;font-weight:800;color:var(--green-d)}
+.price small{font-size:1rem;color:var(--mute);font-weight:600}
+.plan ul{margin:0 0 8px;padding:0;list-style:none;flex:1}
+.plan li{padding:3px 0 3px 26px;position:relative}
+.plan li::before{content:"✔";position:absolute;left:0;color:var(--green)}
+.plan .btn{text-align:center}
+form{background:var(--card);border:3px solid var(--line);border-radius:28px;padding:22px;display:grid;gap:16px}
+fieldset{border:0;padding:0;margin:0;display:grid;gap:10px}
+legend{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.15rem;margin-bottom:4px;padding:0}
+label.opt{display:flex;gap:10px;align-items:center;border:2px solid var(--line);border-radius:16px;padding:12px 14px;cursor:pointer;font-weight:700}
+label.opt:has(input:checked){border-color:var(--green);background:color-mix(in srgb,var(--green) 14%,transparent)}
+label.f{display:grid;gap:4px;font-weight:700}
+input[type=text],input[type=tel],textarea,select{font:inherit;padding:12px 14px;border-radius:14px;border:2px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
+input:focus,select:focus,textarea:focus,.tab:focus-visible,.btn:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+.row{display:grid;gap:12px;grid-template-columns:1fr}
+@media(min-width:600px){.row{grid-template-columns:1fr 1fr}}
+.hide{display:none!important}
+.summary{background:var(--sky);border-radius:20px;padding:16px 18px}
+.summary .line{display:flex;justify-content:space-between;gap:12px;padding:3px 0}
+.summary .tot{border-top:2px dashed var(--mute);margin-top:8px;padding-top:8px;font-weight:800;font-size:1.15rem}
+.err{color:var(--coral);font-weight:700;min-height:1.2em;margin:0}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;padding:0;list-style:none;counter-reset:s}
+.steps li{background:var(--card);border-radius:22px;padding:16px 18px 16px 62px;position:relative;counter-increment:s;border:3px solid var(--line)}
+.steps li::before{content:counter(s);position:absolute;left:14px;top:14px;width:34px;height:34px;border-radius:50%;background:var(--sun);color:#2b2a33;font:800 1.1rem 'Baloo 2',sans-serif;display:grid;place-items:center}
+details{background:var(--card);border-radius:18px;padding:12px 16px;margin-bottom:10px;border:2px solid var(--line)}
+summary{cursor:pointer;font-weight:800}
+details p{margin:8px 0 2px;color:var(--mute)}
+footer{text-align:center;color:var(--mute);font-size:.9rem;padding:20px 0 30px}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:5;background:#25d366;color:#fff;text-decoration:none;font-weight:800;padding:12px 18px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div class="logo">Simkad <span>OneXOX</span></div><a class="btn small sun" href="#tempah">Tempah</a></header>
+
+<div class="hero">
+ <div class="blob"></div><div class="blob2"></div><div class="sim" aria-hidden="true">📱</div>
+ <h1>Simkad baru? Siap dalam beberapa klik!</h1>
+ <p>Pilih pelan, isi borang ringkas, kami uruskan selebihnya. Simkad dihantar terus ke rumah anda.</p>
+ <a class="btn" href="#pelan">Lihat pelan</a>
+</div>
+
+<div class="perks">
+ <div class="perk"><b>🚚</b>Hantar ke rumah</div>
+ <div class="perk"><b>🔁</b>Tukar operator, nombor sama</div>
+ <div class="perk"><b>💬</b>Tempah melalui WhatsApp</div>
+ <div class="perk"><b>🎁</b>Airtime RM2 percuma*</div>
+</div>
+
+<section id="pelan">
+ <h2>Pilih pelan kegemaran anda</h2>
+ <p class="sub">Semua pelan ONE-X Prepaid. Tekan satu pelan untuk terus tempah.</p>
+ <div class="tabs" role="group" aria-label="Jenis pelan">
+  <button class="tab" data-f="all" aria-pressed="true">Semua</button>
+  <button class="tab" data-f="bulan" aria-pressed="false">Bulanan</button>
+  <button class="tab" data-f="pass" aria-pressed="false">Harian &amp; Mingguan</button>
+ </div>
+ <div class="plans" id="plans"></div>
+</section>
+
+<section id="tempah">
+ <h2>Tempah sekarang</h2>
+ <p class="sub">Isi butiran di bawah. Kami akan sahkan melalui WhatsApp.</p>
+ <form id="f" novalidate>
+  <fieldset><legend>1. Pelan pilihan</legend>
+   <select id="plan" aria-label="Pelan"></select>
+  </fieldset>
+  <fieldset><legend>2. Anda mahu yang mana?</legend>
+   <label class="opt"><input type="radio" name="jenis" value="Nombor baru" checked> 🆕 Nombor baru</label>
+   <label class="opt"><input type="radio" name="jenis" value="Tukar operator (MNP)"> 🔁 Tukar operator, kekalkan nombor</label>
+   <label class="opt"><input type="radio" name="jenis" value="eSIM"> ⚡ eSIM (tanpa kad fizikal)</label>
+  </fieldset>
+  <fieldset id="mnp" class="hide"><legend>Nombor sedia ada</legend>
+   <div class="row">
+    <label class="f">Operator semasa
+     <select id="op"><option value="">Pilih operator</option><option>Maxis</option><option>CelcomDigi</option><option>U Mobile</option><option>Unifi Mobile</option><option>Tune Talk</option><option>Yoodo</option><option>Lain-lain</option></select></label>
+    <label class="f">Nombor telefon semasa<input type="tel" id="mnum" inputmode="tel" placeholder="cth. 0123456789"></label>
+   </div>
+  </fieldset>
+  <fieldset><legend>3. Butiran anda</legend>
+   <div class="row">
+    <label class="f">Nama penuh<input type="text" id="nama" autocomplete="name"></label>
+    <label class="f">No. telefon (WhatsApp)<input type="tel" id="tel" inputmode="tel" autocomplete="tel" placeholder="cth. 0123456789"></label>
+   </div>
+   <div id="alamatBox" class="grid" style="display:grid;gap:10px">
+    <label class="f">Alamat penghantaran<textarea id="alamat" rows="3" autocomplete="street-address"></textarea></label>
+    <div class="row">
+     <label class="f">Poskod<input type="text" id="poskod" inputmode="numeric" maxlength="5" autocomplete="postal-code"></label>
+     <label class="f">Bandar<input type="text" id="bandar" autocomplete="address-level2"></label>
+    </div>
+   </div>
+   <label class="f">Nota (pilihan)<input type="text" id="nota"></label>
+  </fieldset>
+  <fieldset><legend>4. Cara bayaran</legend>
+   <label class="opt"><input type="radio" name="bayar" value="Pindahan bank / DuitNow" checked> 🏦 Pindahan bank / DuitNow</label>
+   <label class="opt"><input type="radio" name="bayar" value="Bayar semasa terima (COD)"> 💵 Bayar semasa terima (COD)</label>
+  </fieldset>
+  <div class="summary" id="sum"></div>
+  <p class="err" id="err" role="alert"></p>
+  <button class="btn" type="submit">Hantar tempahan ke WhatsApp 💬</button>
+  <div id="done" class="summary hide"><b>Tempahan sedia! 🎉</b><p style="margin:6px 0 12px">Tekan Buka WhatsApp, kemudian tekan hantar di dalam WhatsApp.</p><a id="wa" class="btn" target="_blank" rel="noopener" href="#">Buka WhatsApp</a> <button type="button" class="btn sun" id="cp">Salin mesej</button></div>
+  <p class="sub" style="margin:0;font-size:.9rem">Untuk keselamatan, gambar MyKad dan butiran peribadi lain diminta melalui WhatsApp selepas tempahan disahkan, bukan di laman ini.</p>
+ </form>
+</section>
+
+<section>
+ <h2>Cara ia berjalan</h2>
+ <ol class="steps">
+  <li><b>Pilih pelan</b><br>Pilih yang sesuai dengan data anda.</li>
+  <li><b>Isi borang</b><br>Mengambil masa kurang seminit.</li>
+  <li><b>Sahkan di WhatsApp</b><br>Kami semak dan beri arahan bayaran.</li>
+  <li><b>Terima simkad</b><br>Aktifkan dan mula guna!</li>
+ </ol>
+</section>
+
+<section>
+ <h2>Soalan lazim</h2>
+ <details><summary>Boleh kekalkan nombor lama?</summary><p>Boleh. Pilih “Tukar operator” dan isi nombor sedia ada anda. Nombor berawalan 015 tidak boleh dipindahkan.</p></details>
+ <details><summary>Bagaimana nak bayar?</summary><p>Pindahan bank atau DuitNow, atau COD untuk kawasan tertentu. Kami akan beri butiran selepas tempahan disahkan.</p></details>
+ <details><summary>Berapa lama simkad sampai?</summary><p>Biasanya dalam beberapa hari bekerja. eSIM boleh diaktifkan lebih cepat.</p></details>
+ <details><summary>Apa dokumen diperlukan?</summary><p>Anda perlu menunjukkan MyKad atau pasport untuk pendaftaran simkad, seperti yang dikehendaki peraturan.</p></details>
+</section>
+
+<footer>© <span id="yr"></span> Simkad OneXOX · *Harga dan promosi tertakluk kepada perubahan, sila sahkan dengan kami semasa tempahan.</footer>
+</div>
+<a class="fab" id="fab" target="_blank" rel="noopener" href="#">💬 Tanya kami</a>
+
+<script>
+// ====== UBAH DI SINI ======
+var WHATSAPP="60173177646"; // nombor WhatsApp anda, format 60xxxxxxxxx tanpa +
+var PLANS=[
+ {id:"X5",nama:"Pas Harian X5",harga:5,unit:"/hari",jenis:"pass",ciri:["10GB data","2GB hotspot","Sah 1 hari"]},
+ {id:"X10",nama:"Pas Mingguan",harga:10,unit:"/minggu",jenis:"pass",ciri:["25GB data","5GB hotspot","Sah 7 hari"]},
+ {id:"X18",nama:"X18",harga:18,unit:"/bulan",jenis:"bulan",ciri:["50GB data (6Mbps)","10GB hotspot","Panggilan sesama rangkaian"]},
+ {id:"X35",nama:"X35 Boost",harga:35,unit:"/bulan",jenis:"bulan",pop:1,ciri:["50GB data tanpa had kelajuan","Hotspot dikongsi","Panggilan tanpa had"]},
+ {id:"X48",nama:"X48 Max",harga:48,unit:"/bulan",jenis:"bulan",ciri:["150GB data tanpa had kelajuan","Hotspot dikongsi","Panggilan tanpa had"]}
+];
+// ==========================
+var $=function(i){return document.getElementById(i)};
+var cur=null;
+function render(f){
+ $("plans").innerHTML=PLANS.filter(function(p){return f==="all"||p.jenis===f}).map(function(p){
+  return '<div class="plan'+(p.pop?' pop':'')+'">'+(p.pop?'<span class="badge">Paling popular</span>':'')+
+  '<h3>'+p.nama+'</h3><div class="price">RM'+p.harga+' <small>'+p.unit+'</small></div><ul>'+
+  p.ciri.map(function(c){return '<li>'+c+'</li>'}).join('')+'</ul><a class="btn" href="#tempah" data-id="'+p.id+'">Pilih pelan ini</a></div>'}).join('');
+}
+function fillSelect(){
+ $("plan").innerHTML=PLANS.map(function(p){return '<option value="'+p.id+'">'+p.nama+' – RM'+p.harga+p.unit+'</option>'}).join('');
+ $("plan").value="X35";
+}
+function jenis(){return document.querySelector('input[name=jenis]:checked').value}
+function bayar(){return document.querySelector('input[name=bayar]:checked').value}
+function plan(){return PLANS.filter(function(p){return p.id===$("plan").value})[0]}
+function summary(){
+ var p=plan(),j=jenis();
+ $("sum").innerHTML='<div class="line"><span>'+p.nama+'</span><span>RM'+p.harga+p.unit+'</span></div>'+
+ '<div class="line"><span>Jenis</span><span>'+j+'</span></div>'+
+ '<div class="line"><span>Bayaran</span><span>'+bayar()+'</span></div>'+
+ '<div class="line tot"><span>Jumlah pelan</span><span>RM'+p.harga+'</span></div>'+
+ '<div class="line" style="color:var(--mute);font-size:.85rem"><span>Caj simkad &amp; penghantaran akan disahkan oleh kami.</span></div>';
+ $("mnp").classList.toggle("hide",j!=="Tukar operator (MNP)");
+ $("alamatBox").style.display=j==="eSIM"?"none":"grid";
+}
+document.querySelectorAll(".tab").forEach(function(t){t.addEventListener("click",function(){
+ document.querySelectorAll(".tab").forEach(function(x){x.setAttribute("aria-pressed","false")});
+ t.setAttribute("aria-pressed","true");render(t.dataset.f)})});
+$("plans").addEventListener("click",function(e){var a=e.target.closest("[data-id]");if(a){$("plan").value=a.dataset.id;summary()}});
+$("f").addEventListener("change",summary);
+$("f").addEventListener("submit",function(e){
+ e.preventDefault();
+ var j=jenis(),err="",tel=$("tel").value.replace(/[\s-]/g,"");
+ if(!$("nama").value.trim())err="Sila isi nama penuh.";
+ else if(!/^(\+?60|0)1\d{8,9}$/.test(tel))err="Sila isi nombor telefon yang sah, cth. 0123456789.";
+ else if(j==="Tukar operator (MNP)"&&(!$("op").value||!$("mnum").value.trim()))err="Sila pilih operator dan isi nombor sedia ada.";
+ else if(j!=="eSIM"&&(!$("alamat").value.trim()||!/^\d{5}$/.test($("poskod").value)||!$("bandar").value.trim()))err="Sila lengkapkan alamat, poskod 5 digit dan bandar.";
+ $("err").textContent=err;if(err)return;
+ var p=plan(),m=["Hai! Saya nak tempah simkad OneXOX 😊","","Pelan: "+p.nama+" (RM"+p.harga+p.unit+")","Jenis: "+j];
+ if(j==="Tukar operator (MNP)")m.push("Operator semasa: "+$("op").value,"Nombor semasa: "+$("mnum").value.trim());
+ m.push("Nama: "+$("nama").value.trim(),"Telefon: "+tel);
+ if(j!=="eSIM")m.push("Alamat: "+$("alamat").value.trim()+", "+$("poskod").value+" "+$("bandar").value.trim());
+ m.push("Bayaran: "+bayar());
+ if($("nota").value.trim())m.push("Nota: "+$("nota").value.trim());
+ var txt=m.join("\n");window.lastMsg=txt;
+ $("wa").href="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(txt);
+ $("done").classList.remove("hide");$("done").scrollIntoView({behavior:"smooth",block:"center"});
+});
+$("cp").addEventListener("click",function(){try{navigator.clipboard.writeText(window.lastMsg||"").then(function(){$("cp").textContent="Disalin ✔"})}catch(x){}});
+$("fab").href="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent("Hai, saya nak tanya tentang pelan OneXOX.");
+$("yr").textContent=new Date().getFullYear();
+render("all");fillSelect();summary();
+</script>
+</body>
+</html>
